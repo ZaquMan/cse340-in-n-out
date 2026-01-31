@@ -1,0 +1,38 @@
+{
+  "name": "in-n-out-management-suite",
+  "version": "1.0.0",
+  "description": "A BYU-PW CSE340 Project;  An server providing API endpoints for managing an In-n-Out's menu, ingredients, orders, and employees.  Requires a seperate MongoDB database.",
+  "homepage": "https://github.com/ZaquMan/cse340-in-n-out#readme",
+  "bugs": {
+    "url": "https://github.com/ZaquMan/cse340-in-n-out/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZaquMan/cse340-in-n-out.git"
+  },
+  "license": "ISC",
+  "author": "Zach Barnett and Jordan Sanchez",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.5",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.2.0",
+    "nodemon": "^3.1.11",
+    "prettier": "^3.8.1",
+    "swagger-autogen": "^2.23.7"
+  }
+}
