@@ -11,9 +11,7 @@ This server uses MongoDB to store resource data.
 
 This project is planned to be in developement between Feburary 2nd and 20th.
 
-Please reference Trello for work to be done.
-
-(Insert link here)
+Please reference [Trello](https://trello.com/b/tdrBiveR/cse341final) for work to be done.
 
 ## Getting Started
 
