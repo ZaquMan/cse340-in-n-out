@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-const { Schema, model } = mongoose;
 
 const initConnection = (callback) => {
     console.log(process.env.MONGODB_CONNECTION_STRING);
