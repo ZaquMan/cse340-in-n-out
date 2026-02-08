@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const initConnection = (callback) => {
-    console.log(process.env.MONGODB_CONNECTION_STRING);
     mongoose.connect(process.env.MONGODB_CONNECTION_STRING);
     var db = mongoose.connection;
     db.on("error", function (err) {
@@ -11,7 +10,6 @@ const initConnection = (callback) => {
     });
 
     db.once("open", function () {
-        console.log("Connected to MongoDB");
         callback();
     });
 };

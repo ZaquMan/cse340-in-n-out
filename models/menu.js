@@ -18,6 +18,6 @@ const menuSchema = new Schema({
     ]
 });
 
-const Menu = model("Model", menuSchema, "menu_items");
+const Menu = model("Menu", menuSchema, "menu_items");
 
 module.exports = Menu;
