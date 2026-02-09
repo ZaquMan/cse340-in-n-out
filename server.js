@@ -4,11 +4,14 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const routes = require("./routes");
+const mongoose = require("./database");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
+
 // const passport = require("passport");
 // const GithubStrategy = require("passport-github2").Strategy;
 // const session = require("express-session");
-const routes = require("./routes");
-const mongoose = require("./database");
 
 const dotenv = require("dotenv").config();
 const port = process.env.PORT || 3000;
@@ -18,6 +21,9 @@ app.use(bodyParser.json());
 //TODO: Skipping setting up session and Github OAuth
 
 app.use("/", routes);
+
+//Route for swagger documentation
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //404 Error Handler
 app.use(async (req, res, next) => {
