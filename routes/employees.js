@@ -25,13 +25,13 @@ router.post(
            #swagger.parameters["body"] = {
           in: "body",
           schema: {
+		  	  oauth: "43051103"
               $firstName: "Zach",
               $lastName: "Barnett",
               $hireDate: "2020-03-01T00:00:00.000+00:00",
               $hourlyPay: 17.5,
               $role: "manager",
-              $address: "123 Spooner St, Springville, IL 12345",
-              $ssn: "40f9asj499scd"
+              $address: "123 Spooner St, Springville, IL 12345"
        }
     }*/
     utilities.errorHandler(employeesController.createEmployee)

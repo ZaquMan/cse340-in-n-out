@@ -32,16 +32,16 @@ const getSingleEmployee = async (req, res, next) => {
 };
 
 const createEmployee = async (req, res, next) => {
-    const { firstName, lastName, hireDate, hourlyPay, role, address, ssn } = req.body;
+    const { oauthId, firstName, lastName, hireDate, hourlyPay, role, address } = req.body;
     try {
         const employee = await Employee.create({
+            oauthId: oauthId,
             firstName: firstName,
             lastName: lastName,
             hireDate: hireDate,
             hourlyPay: hourlyPay,
             role: role,
-            address: address,
-            ssn: ssn
+            address: address
         });
         if (!employee) {
             throw new Error({ status: 400, message: "Unable to create a new employee." });

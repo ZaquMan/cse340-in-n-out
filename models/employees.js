@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 require("dotenv").config();
 
 const employeeSchema = new Schema({
-    oauth: String,
+    oauthId: String,
     firstName: {
         type: String,
         required: true,
