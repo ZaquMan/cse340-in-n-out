@@ -29,6 +29,9 @@ router.post(
 	          $quantity: 0
 	   }
 	}*/
+    utilities.isAuthenticate,
+    utilities.ingredientsRules(),
+    utilities.checkingErrors,
     utilities.errorHandler(ingredientsController.createIngredient)
 );
 
@@ -42,6 +45,9 @@ router.put(
 	          quantity: 0
 	   }
 	}*/
+    utilities.isAuthenticate,
+    utilities.ingredientsRules(),
+    utilities.checkingErrors,
     utilities.errorHandler(ingredientsController.updateIngredient)
 );
 
