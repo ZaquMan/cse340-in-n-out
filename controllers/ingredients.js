@@ -86,7 +86,7 @@ const deleteIngredient = async (req, res, next) => {
         res.status(204).send();
     } catch (error) {
         if (error instanceof CastError) {
-            next({ status: 400, message: "That is an invalid ingredient id."});
+            next({ status: 400, message: "That is an invalid ingredient id." });
             return;
         }
         next(error);
