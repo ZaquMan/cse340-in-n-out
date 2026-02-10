@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const utilities = require("../utilities");
-
+const utilities = require("../utilities/");
+const validate = require("../utilities/employeesValidation");
 const employeesController = require("../controllers/employees");
 
 /***************
@@ -35,7 +35,7 @@ router.post(
        }
     }*/
     utilities.isAuthenticate,
-    utilities.employeesRules(),
+    validate.employeesRules(),
     utilities.checkingErrors,
     utilities.errorHandler(employeesController.createEmployee)
 );
@@ -56,7 +56,7 @@ router.put(
        }
     }*/
     utilities.isAuthenticate,
-    utilities.employeesRules(),
+    validate.employeesRules(),
     utilities.checkingErrors,
     utilities.errorHandler(employeesController.updateEmployee)
 );

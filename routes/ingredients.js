@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const utilities = require("../utilities");
-
+const utilities = require("../utilities/");
+const validate = require("../utilities/ingredientsValidation");
 const ingredientsController = require("../controllers/ingredients");
 
 /***************
@@ -30,7 +30,7 @@ router.post(
 	   }
 	}*/
     utilities.isAuthenticate,
-    utilities.ingredientsRules(),
+    validate.ingredientsRules(),
     utilities.checkingErrors,
     utilities.errorHandler(ingredientsController.createIngredient)
 );
@@ -46,7 +46,7 @@ router.put(
 	   }
 	}*/
     utilities.isAuthenticate,
-    utilities.ingredientsRules(),
+    validate.ingredientsRules(),
     utilities.checkingErrors,
     utilities.errorHandler(ingredientsController.updateIngredient)
 );
