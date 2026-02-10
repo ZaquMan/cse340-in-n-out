@@ -6,8 +6,8 @@ const doc = {
         description:
             "API that allows In-n-Out employees and managers programtic access to managing their store's menu, ingredient inventory, orders, and employees"
     },
-    host: "localhost:3000", //Change this to final render url
-    schemes: ["http", "https"]
+    host: "cse340-in-n-out.onrender.com",
+    schemes: ["https"]
 };
 
 const outputFile = "./swagger.json";
