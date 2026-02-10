@@ -43,6 +43,6 @@ app.use(async (err, req, res, next) => {
 
 mongoose.initConnection(() => {
     app.listen(port, () => {
-        console.log(`Server is running and listening on port ${port}`);
+        console.log(`Server is running, connected to MongoDB and listening on port ${port}`);
     });
 });
