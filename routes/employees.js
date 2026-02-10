@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const utilities = require("../utilities");
-
+const utilities = require("../utilities/");
+const validate = require("../utilities/employeesValidation");
 const employeesController = require("../controllers/employees");
 
 /***************
@@ -34,6 +34,9 @@ router.post(
               $address: "123 Spooner St, Springville, IL 12345"
        }
     }*/
+    utilities.isAuthenticate,
+    validate.employeesRules(),
+    utilities.checkingErrors,
     utilities.errorHandler(employeesController.createEmployee)
 );
 
@@ -52,6 +55,9 @@ router.put(
               $ssn: "40f9asj499scd"
        }
     }*/
+    utilities.isAuthenticate,
+    validate.employeesRules(),
+    utilities.checkingErrors,
     utilities.errorHandler(employeesController.updateEmployee)
 );
 
