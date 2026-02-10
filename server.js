@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const routes = require("./routes");
-const mongoose = require("./database");
+const mongoose = require("./database/index");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 
@@ -36,7 +36,7 @@ app.use(async (err, req, res, next) => {
     res.status(err.status || 500).send({
         error: {
             status: err.status || 500,
-            message: err.message || "I'm sorry.  There was a problem processing your request."
+            message: err.message || "I'm sorry. There was a problem processing your request."
         }
     });
 });
