@@ -38,6 +38,49 @@
           "Employees"
         ],
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "example": "Zach"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Barnett"
+                },
+                "hireDate": {
+                  "type": "string",
+                  "example": "2020-03-01T00:00:00.000+00:00"
+                },
+                "hourlyPay": {
+                  "type": "number",
+                  "example": 17.5
+                },
+                "role": {
+                  "type": "string",
+                  "example": "manager"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "123 Spooner St, Springville, IL 12345"
+                }
+              },
+              "required": [
+                "firstName",
+                "lastName",
+                "hireDate",
+                "hourlyPay",
+                "role",
+                "address"
+              ]
+            }
+          }
+        ],
         "responses": {
           "400": {
             "description": "Bad Request"
