@@ -34,7 +34,7 @@ router.post(
               $address: "123 Spooner St, Springville, IL 12345"
        }
     }*/
-    // utilities.isAuthenticate,
+    //utilities.isAuthenticate,
     validate.employeesRules(),
     utilities.checkingErrors,
     utilities.errorHandler(employeesController.createEmployee)
@@ -55,7 +55,7 @@ router.put(
               $address: "123 Spooner St, Springville, IL 12345"
        }
     }*/
-    // utilities.isAuthenticate,
+    //utilities.isAuthenticate,
     validate.employeesRules(),
     utilities.checkingErrors,
     utilities.errorHandler(employeesController.updateEmployee)
@@ -64,6 +64,7 @@ router.put(
 router.delete(
     "/:id",
     // #swagger.tags=['Employees']
+    //utilities.isAuthenticate,
     utilities.errorHandler(employeesController.deleteEmployee)
 );
 
