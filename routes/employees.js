@@ -25,16 +25,16 @@ router.post(
            #swagger.parameters["body"] = {
           in: "body",
           schema: {
-		  	  oauth: "43051103"
+		  	  oauthId: "43051103",
               $firstName: "Zach",
               $lastName: "Barnett",
               $hireDate: "2020-03-01T00:00:00.000+00:00",
               $hourlyPay: 17.5,
-              $role: "manager",
+              role: "manager",
               $address: "123 Spooner St, Springville, IL 12345"
        }
     }*/
-    utilities.isAuthenticate,
+    // utilities.isAuthenticate,
     validate.employeesRules(),
     utilities.checkingErrors,
     utilities.errorHandler(employeesController.createEmployee)
@@ -46,16 +46,16 @@ router.put(
            #swagger.parameters["body"] = {
           in: "body",
           schema: {
+              oauthId: 0
               $firstName: "Zach",
               $lastName: "Barnett",
               $hireDate: "2020-03-01T00:00:00.000+00:00",
               $hourlyPay: 17.5,
-              $role: "manager",
-              $address: "123 Spooner St, Springville, IL 12345",
-              $ssn: "40f9asj499scd"
+              role: "manager",
+              $address: "123 Spooner St, Springville, IL 12345"
        }
     }*/
-    utilities.isAuthenticate,
+    // utilities.isAuthenticate,
     validate.employeesRules(),
     utilities.checkingErrors,
     utilities.errorHandler(employeesController.updateEmployee)

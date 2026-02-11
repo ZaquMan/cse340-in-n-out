@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { body } = require("express-validator");
 const validate = {};
 
@@ -12,11 +13,23 @@ validate.employeesRules = () => {
 
         body("hireDate").notEmpty().isISO8601().toDate(),
 
-        body("hourlyPay").notEmpty().isFloat({ min: 0 }).toFloat(),
+        body("hourlyPay")
+            .notEmpty()
+            .isFloat({ min: process.env.MINIMUM_WAGE })
+            .toFloat()
+            .withMessage(`You need to pay are least minimum wage ($${process.env.MINIMUM_WAGE})`),
 
-        body("role").optional().trim().isString().isIn(["employee", "manager"]),
+        body("role")
+            .optional()
+            .trim()
+            .toLowerCase()
+            .isString()
+            .isIn(["employee", "manager"])
+            .withMessage("That is not a valid role."),
 
-        body("address").trim().notEmpty().isString()
+        body("address").trim().notEmpty().isString(),
+
+        body("oauthId").optional().notEmpty().trim().isInt({ min: 0 })
     ];
 };
 
