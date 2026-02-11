@@ -2,39 +2,31 @@ const { Schema, model } = require("mongoose");
 require("dotenv").config();
 
 const employeeSchema = new Schema({
-    oauthId: String,
+    oauthId: {
+        type: String,
+        default: ""
+    },
     firstName: {
-        type: String,
-        required: true,
-        minLength: 2
-    },
-    lastName: {
-        type: String,
-        required: true,
-        minLength: 2
-    },
-    hireDate: {
-        type: Date,
-        max: [Date.now(), "You can't hire someone in the future."]
-    },
-    hourlyPay: {
-        type: Schema.Types.Double,
-        required: true,
-        min: [process.env.MINIMUM_WAGE, "You need to pay at least minimum wage."]
-    },
-    role: {
-        type: String,
-        default: "employee",
-        enum: {
-            values: ["employee", "manager"],
-            message: "{VALUE} is not a valid role."
-        }
-    },
-    address: {
         type: String,
         required: true
     },
-    ssn: {
+    lastName: {
+        type: String,
+        required: true
+    },
+    hireDate: {
+        type: Date,
+        required: true
+    },
+    hourlyPay: {
+        type: Schema.Types.Double,
+        required: true
+    },
+    role: {
+        type: String,
+        default: "employee"
+    },
+    address: {
         type: String,
         required: true
     }

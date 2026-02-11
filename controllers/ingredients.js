@@ -54,12 +54,9 @@ const updateIngredient = async (req, res, next) => {
         if (!ingredient) {
             throw new Error({ status: 404, message: "The ingredient was not found." });
         }
-        if ("name" in req.body) {
-            ingredient.name = req.body.name;
-        }
-        if ("quantity" in req.body) {
-            ingredient.quantity = req.body.quantity;
-        }
+
+        ingredient.name = req.body.name;
+        ingredient.quantity = req.body.quantity;
         await ingredient.save();
         res.status(204).send();
     } catch (error) {

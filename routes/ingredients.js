@@ -54,6 +54,7 @@ router.put(
 router.delete(
     "/:id",
     // #swagger.tags=['Ingredients']
+    // utilities.isAuthenticate,
     utilities.errorHandler(ingredientsController.deleteIngredient)
 );
 

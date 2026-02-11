@@ -59,27 +59,21 @@ const updateEmployee = async (req, res, next) => {
         if (!employee) {
             throw new Error({ status: 404, message: "The employee was not found." });
         }
-        if ("firstName" in req.body) {
-            employee.firstName = req.body.firstName;
-        }
-        if ("lastName" in req.body) {
-            employee.lastName = req.body.lastName;
-        }
-        if ("hireDate" in req.body) {
-            employee.hireDate = req.body.hireDate;
-        }
-        if ("hourlyPay" in req.body) {
-            employee.hourlyPay = req.body.hourlyPay;
-        }
+        // PUT requests require all the fields, even if they are not being changed
+        employee.firstName = req.body.firstName;
+        employee.lastName = req.body.lastName;
+        employee.hireDate = req.body.hireDate;
+        employee.hourlyPay = req.body.hourlyPay;
+        employee.address = req.body.address;
+
+        // Our validation allows role and oauthId to be optional to allow for default values
         if ("role" in req.body) {
             employee.role = req.body.role;
         }
-        if ("address" in req.body) {
-            employee.address = req.body.address;
+        if ("oauthId" in req.body) {
+            employee.oauthId = req.body.oauthId;
         }
-        if ("ssn" in req.body) {
-            employee.ssn = req.body.ssn;
-        }
+
         await employee.save();
         res.status(204).send();
     } catch (error) {

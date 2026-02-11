@@ -45,6 +45,10 @@
             "schema": {
               "type": "object",
               "properties": {
+                "oauthId": {
+                  "type": "string",
+                  "example": "43051103"
+                },
                 "firstName": {
                   "type": "string",
                   "example": "Zach"
@@ -75,7 +79,6 @@
                 "lastName",
                 "hireDate",
                 "hourlyPay",
-                "role",
                 "address"
               ]
             }
@@ -129,6 +132,10 @@
             "schema": {
               "type": "object",
               "properties": {
+                "oauthId": {
+                  "type": "string",
+                  "example": "0"
+                },
                 "firstName": {
                   "type": "string",
                   "example": "Zach"
@@ -152,10 +159,6 @@
                 "address": {
                   "type": "string",
                   "example": "123 Spooner St, Springville, IL 12345"
-                },
-                "ssn": {
-                  "type": "string",
-                  "example": "40f9asj499scd"
                 }
               },
               "required": [
@@ -163,9 +166,7 @@
                 "lastName",
                 "hireDate",
                 "hourlyPay",
-                "role",
-                "address",
-                "ssn"
+                "address"
               ]
             }
           }

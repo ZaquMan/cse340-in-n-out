@@ -7,8 +7,7 @@ const ingredientSchema = new Schema({
     },
     quantity: {
         type: Schema.Types.Number,
-        required: true,
-        min: [0, "You can't less than 0 of an item."]
+        required: true
     }
 });
 

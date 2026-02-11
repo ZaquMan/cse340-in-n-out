@@ -25,11 +25,12 @@ router.post(
            #swagger.parameters["body"] = {
           in: "body",
           schema: {
+		  	  oauthId: "43051103",
               $firstName: "Zach",
               $lastName: "Barnett",
               $hireDate: "2020-03-01T00:00:00.000+00:00",
               $hourlyPay: 17.5,
-              $role: "manager",
+              role: "manager",
               $address: "123 Spooner St, Springville, IL 12345"
        }
     }*/
@@ -45,13 +46,13 @@ router.put(
            #swagger.parameters["body"] = {
           in: "body",
           schema: {
+              oauthId: "0",
               $firstName: "Zach",
               $lastName: "Barnett",
               $hireDate: "2020-03-01T00:00:00.000+00:00",
               $hourlyPay: 17.5,
-              $role: "manager",
-              $address: "123 Spooner St, Springville, IL 12345",
-              $ssn: "40f9asj499scd"
+              role: "manager",
+              $address: "123 Spooner St, Springville, IL 12345"
        }
     }*/
     //utilities.isAuthenticate,
@@ -63,6 +64,7 @@ router.put(
 router.delete(
     "/:id",
     // #swagger.tags=['Employees']
+    //utilities.isAuthenticate,
     utilities.errorHandler(employeesController.deleteEmployee)
 );
 
