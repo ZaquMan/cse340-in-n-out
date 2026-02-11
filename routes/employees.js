@@ -34,7 +34,7 @@ router.post(
               $address: "123 Spooner St, Springville, IL 12345"
        }
     }*/
-    utilities.isAuthenticate,
+    //utilities.isAuthenticate,
     validate.employeesRules(),
     utilities.checkingErrors,
     utilities.errorHandler(employeesController.createEmployee)
@@ -55,7 +55,7 @@ router.put(
               $ssn: "40f9asj499scd"
        }
     }*/
-    utilities.isAuthenticate,
+    //utilities.isAuthenticate,
     validate.employeesRules(),
     utilities.checkingErrors,
     utilities.errorHandler(employeesController.updateEmployee)
