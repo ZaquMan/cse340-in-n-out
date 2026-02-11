@@ -46,7 +46,7 @@ router.put(
            #swagger.parameters["body"] = {
           in: "body",
           schema: {
-              oauthId: 0,
+              oauthId: "0",
               $firstName: "Zach",
               $lastName: "Barnett",
               $hireDate: "2020-03-01T00:00:00.000+00:00",

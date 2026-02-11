@@ -29,7 +29,7 @@ validate.employeesRules = () => {
 
         body("address").trim().notEmpty().isString(),
 
-        body("oauthId").optional().notEmpty().trim().isInt({ min: 0 })
+        body("oauthId").optional().notEmpty().trim().isString().isLength({ min: 0 })
     ];
 };
 
