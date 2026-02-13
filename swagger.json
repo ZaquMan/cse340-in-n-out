@@ -328,6 +328,187 @@
           }
         }
       }
+    },
+    "/orders/": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "description": "",
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customerName": {
+                  "type": "string",
+                  "example": "guest"
+                },
+                "subTotal": {
+                  "type": "number",
+                  "example": 0
+                },
+                "tax": {
+                  "type": "number",
+                  "example": 0
+                },
+                "total": {
+                  "type": "number",
+                  "example": 0
+                },
+                "items": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "customizations": {
+                  "type": "object",
+                  "properties": {}
+                }
+              },
+              "required": [
+                "customerName",
+                "subTotal",
+                "tax",
+                "total",
+                "items",
+                "customizations"
+              ]
+            },
+            "$timestamp": "2020-03-01T00:00:00.000+00:00"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Orders"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customerName": {
+                  "type": "string",
+                  "example": "guest"
+                },
+                "subTotal": {
+                  "type": "number",
+                  "example": 0
+                },
+                "tax": {
+                  "type": "number",
+                  "example": 0
+                },
+                "total": {
+                  "type": "number",
+                  "example": 0
+                },
+                "items": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "customizations": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "timestamp": {
+                  "type": "string",
+                  "example": "2020-03-01T00:00:00.000+00:00"
+                }
+              },
+              "required": [
+                "customerName",
+                "subTotal",
+                "tax",
+                "total",
+                "items",
+                "customizations",
+                "timestamp"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Orders"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
     }
   }
 }
