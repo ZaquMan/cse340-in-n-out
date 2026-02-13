@@ -13,7 +13,7 @@ export default defineConfig([
             "no-unused-vars": [
                 "error",
                 {
-                    argsIgnorePattern: "res|next|^err|mongoDB",
+                    argsIgnorePattern: "req|res|next|^err",
                     varsIgnorePattern: "dotenv"
                 }
             ],

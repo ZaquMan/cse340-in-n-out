@@ -10,12 +10,14 @@ const ingredientsController = require("../controllers/ingredients");
 router.get(
     "/",
     // #swagger.tags=['Ingredients']
+    utilities.isAuthenticate("employee"),
     utilities.errorHandler(ingredientsController.getAllIngredients)
 );
 
 router.get(
     "/:id",
     // #swagger.tags=['Ingredients']
+    utilities.isAuthenticate("employee"),
     utilities.errorHandler(ingredientsController.getSingleIngredient)
 );
 
@@ -29,7 +31,7 @@ router.post(
 	          $quantity: 0
 	   }
 	}*/
-    //utilities.isAuthenticate,
+    utilities.isAuthenticate("manager"),
     validate.ingredientsRules(),
     utilities.checkingErrors,
     utilities.errorHandler(ingredientsController.createIngredient)
@@ -45,7 +47,7 @@ router.put(
 	          quantity: 0
 	   }
 	}*/
-    //utilities.isAuthenticate,
+    utilities.isAuthenticate("employee"),
     validate.ingredientsRules(),
     utilities.checkingErrors,
     utilities.errorHandler(ingredientsController.updateIngredient)
@@ -54,7 +56,7 @@ router.put(
 router.delete(
     "/:id",
     // #swagger.tags=['Ingredients']
-    // utilities.isAuthenticate,
+    utilities.isAuthenticate("manager"),
     utilities.errorHandler(ingredientsController.deleteIngredient)
 );
 

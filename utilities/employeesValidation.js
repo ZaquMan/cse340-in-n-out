@@ -24,7 +24,7 @@ validate.employeesRules = () => {
             .trim()
             .toLowerCase()
             .isString()
-            .isIn(["employee", "manager"])
+            .isIn(process.env.ROLE_AUTHORITY.split(","))
             .withMessage("That is not a valid role."),
 
         body("address").trim().notEmpty().isString(),

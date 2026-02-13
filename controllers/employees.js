@@ -6,7 +6,8 @@ const getAllEmployees = async (req, res, next) => {
     try {
         const Employees = await Employee.find();
         if (!Employees) {
-            throw new Error({ status: 404, message: "No employees were found." });
+            next({ status: 404, message: "No employees were found." });
+            return;
         }
         res.status(200).send(Employees);
     } catch (error) {
@@ -19,7 +20,8 @@ const getSingleEmployee = async (req, res, next) => {
     try {
         const employee = await Employee.findById(id);
         if (!employee) {
-            throw new Error({ status: 404, message: "That employee does not exist." });
+            next({ status: 404, message: "That employee does not exist." });
+            return;
         }
         res.status(200).send(employee);
     } catch (error) {
@@ -44,7 +46,8 @@ const createEmployee = async (req, res, next) => {
             address: address
         });
         if (!employee) {
-            throw new Error({ status: 400, message: "Unable to create a new employee." });
+            next({ status: 400, message: "Unable to create a new employee." });
+            return;
         }
         res.status(201).send(employee._id);
     } catch (error) {
@@ -57,7 +60,8 @@ const updateEmployee = async (req, res, next) => {
     try {
         const employee = await Employee.findById(id);
         if (!employee) {
-            throw new Error({ status: 404, message: "The employee was not found." });
+            next({ status: 404, message: "The employee was not found." });
+            return;
         }
         // PUT requests require all the fields, even if they are not being changed
         employee.firstName = req.body.firstName;

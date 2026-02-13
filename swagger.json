@@ -5,10 +5,10 @@
     "description": "API that allows In-n-Out employees and managers programtic access to managing their store's menu, ingredient inventory, orders, and employees",
     "version": "1.0.0"
   },
-  "host": "cse340-in-n-out.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/": {
