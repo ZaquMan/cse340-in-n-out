@@ -36,8 +36,8 @@ router.use("/employees", require("./employees"));
 
 router.use("/ingredients", require("./ingredients"));
 
-router.use("/menu_items", require("./menu_items"));
-
 router.use("/orders", require("./orders"));
+
+router.use("/menu_items", require("./menu_items"));
 
 module.exports = router;

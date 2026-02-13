@@ -11,7 +11,7 @@
     "url": "git+https://github.com/ZaquMan/cse340-in-n-out.git"
   },
   "license": "ISC",
-  "author": "Zach Barnett and Jordan Sanchez",
+  "author": "Zach Barnett, Jordan Sanchez, and Fernando Costa",
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
