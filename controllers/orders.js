@@ -6,7 +6,8 @@ const getAllOrders = async (req, res, next) => {
     try {
         const orders = await Order.find();
         if (!orders) {
-            throw new Error({ status: 404, message: "No orders were found." });
+            next({ status: 404, message: "No orders were found." });
+            return;
         }
         res.status(200).send(orders);
     } catch (error) {
@@ -19,7 +20,8 @@ const getSingleOrder = async (req, res, next) => {
     try {
         const order = await Order.findById(id);
         if (!order) {
-            throw new Error({ status: 404, message: "That order does not exist." });
+            next({ status: 404, message: "That order does not exist." });
+            return;
         }
         res.status(200).send(order);
     } catch (error) {
@@ -44,7 +46,8 @@ const createOrder = async (req, res, next) => {
             timestamp: timestamp
         });
         if (!order) {
-            throw new Error({ status: 400, message: "Unable to create a new order." });
+            next({ status: 400, message: "Unable to create a new order." });
+            return;
         }
         res.status(201).send(order._id);
     } catch (error) {
@@ -57,7 +60,8 @@ const updateOrder = async (req, res, next) => {
     try {
         const order = await Order.findById(id);
         if (!order) {
-            throw new Error({ status: 404, message: "The order was not found." });
+            next({ status: 404, message: "The order was not found." });
+            return;
         }
 
         order.customerName = req.body.customerName;
