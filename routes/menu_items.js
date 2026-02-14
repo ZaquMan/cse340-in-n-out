@@ -30,7 +30,7 @@ router.post(
               ingredients: ["698572fc78981de026571e8d", "6985739378981de026571e96"]
        }
     }*/
-    //utilities.isAuthenticate,
+    utilities.isAuthenticate("manager"),
     validate.menu_itemsRules(),
     utilities.checkingErrors,
     utilities.errorHandler(menu_itemsController.createMenu_item)
@@ -47,7 +47,7 @@ router.put(
               ingredients: ["698572fc78981de026571e8d", "6985739378981de026571e96"]
        }
     }*/
-    //utilities.isAuthenticate,
+    utilities.isAuthenticate("manager"),
     validate.menu_itemsRules(),
     utilities.checkingErrors,
     utilities.errorHandler(menu_itemsController.updateMenu_item)
@@ -56,7 +56,7 @@ router.put(
 router.delete(
     "/:id",
     // #swagger.tags=['Menu_items']
-    //utilities.isAuthenticate,
+    utilities.isAuthenticate("manager"),
     utilities.errorHandler(menu_itemsController.deleteMenu_item)
 );
 

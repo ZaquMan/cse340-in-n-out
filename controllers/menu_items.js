@@ -9,7 +9,8 @@ const getAllMenu_items = async (req, res, next) => {
     try {
         const menu_items = await Menu_item.find();
         if (!menu_items) {
-            throw new Error({ status: 404, message: "No menu_items were found." });
+            next({ status: 404, message: "No menu items were found." });
+            return;
         }
         res.status(200).send(menu_items);
     } catch (error) {
@@ -22,12 +23,13 @@ const getSingleMenu_item = async (req, res, next) => {
     try {
         const menu_item = await Menu_item.findById(id);
         if (!menu_item) {
-            throw new Error({ status: 404, message: "That menu_item does not exist." });
+            next({ status: 404, message: "That menu item does not exist." });
+            return;
         }
         res.status(200).send(menu_item);
     } catch (error) {
         if (error instanceof CastError) {
-            next({ status: 400, message: "Invalid menu_item id." });
+            next({ status: 400, message: "Invalid menu item id." });
             return;
         }
         next(error);
@@ -55,7 +57,8 @@ const createMenu_item = async (req, res, next) => {
             ingredients: ingredients
         });
         if (!menu_item) {
-            throw new Error({ status: 400, message: "Unable to create a new menu_item." });
+            next({ status: 400, message: "Unable to create a new menu item." });
+            return;
         }
         res.status(201).send(menu_item._id);
     } catch (error) {
@@ -68,7 +71,8 @@ const updateMenu_item = async (req, res, next) => {
     try {
         const menu_item = await Menu_item.findById(id);
         if (!menu_item) {
-            throw new Error({ status: 404, message: "The menu_item was not found." });
+            next({ status: 404, message: "The menu item was not found." });
+            return;
         }
 
         menu_item.name = req.body.name;
@@ -90,10 +94,10 @@ const updateMenu_item = async (req, res, next) => {
         res.status(204).send();
     } catch (error) {
         if (error instanceof DocumentNotFoundError) {
-            next({ status: 404, message: "The menu_item was not found." });
+            next({ status: 404, message: "The menu item was not found." });
             return;
         } else if (error instanceof CastError) {
-            next({ status: 400, message: "Invalid menu_item id." });
+            next({ status: 400, message: "Invalid menu item id." });
             return;
         } else {
             next(error);
@@ -106,13 +110,13 @@ const deleteMenu_item = async (req, res, next) => {
     try {
         const result = await Menu_item.deleteOne({ _id: id });
         if (result.deletedCount == 0 && result.acknowledged) {
-            next({ status: 404, message: "That menu_item doesn't exist" });
+            next({ status: 404, message: "That menu item doesn't exist" });
             return;
         }
         res.status(204).send();
     } catch (error) {
         if (error instanceof CastError) {
-            next({ status: 400, message: "That is an invalid menu_item id." });
+            next({ status: 400, message: "That is an invalid menu item id." });
             return;
         }
         next(error);

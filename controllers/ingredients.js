@@ -6,7 +6,8 @@ const getAllIngredients = async (req, res, next) => {
     try {
         const ingredients = await Ingredient.find();
         if (!ingredients) {
-            throw new Error({ status: 404, message: "No ingredients were found." });
+            next({ status: 404, message: "No ingredients were found." });
+            return;
         }
         res.status(200).send(ingredients);
     } catch (error) {
@@ -19,7 +20,8 @@ const getSingleIngredient = async (req, res, next) => {
     try {
         const ingredient = await Ingredient.findById(id);
         if (!ingredient) {
-            throw new Error({ status: 404, message: "That ingredient does not exist." });
+            next({ status: 404, message: "That ingredient does not exist." });
+            return;
         }
         res.status(200).send(ingredient);
     } catch (error) {
@@ -39,7 +41,8 @@ const createIngredient = async (req, res, next) => {
             quantity: quantity
         });
         if (!ingredient) {
-            throw new Error({ status: 400, message: "Unable to create a new ingredient." });
+            next({ status: 400, message: "Unable to create a new ingredient." });
+            return;
         }
         res.status(201).send(ingredient._id);
     } catch (error) {
@@ -52,7 +55,8 @@ const updateIngredient = async (req, res, next) => {
     try {
         const ingredient = await Ingredient.findById(id);
         if (!ingredient) {
-            throw new Error({ status: 404, message: "The ingredient was not found." });
+            next({ status: 404, message: "The ingredient was not found." });
+            return;
         }
 
         ingredient.name = req.body.name;

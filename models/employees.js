@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-require("dotenv").config();
 
 const employeeSchema = new Schema({
     oauthId: {

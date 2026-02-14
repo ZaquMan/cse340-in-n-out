@@ -10,12 +10,14 @@ const employeesController = require("../controllers/employees");
 router.get(
     "/",
     // #swagger.tags=['Employees']
+    utilities.isAuthenticate("employee"), //TODO STRETCH GOAL: if not manager, only show self
     utilities.errorHandler(employeesController.getAllEmployees)
 );
 
 router.get(
     "/:id",
     // #swagger.tags=['Employees']
+    utilities.isAuthenticate("employee"), //TODO STRETCH GOAL: if not manager, only show self
     utilities.errorHandler(employeesController.getSingleEmployee)
 );
 
@@ -34,7 +36,7 @@ router.post(
               $address: "123 Spooner St, Springville, IL 12345"
        }
     }*/
-    //utilities.isAuthenticate,
+    // utilities.isAuthenticate("manager"), // In the real world, this would be authenticated too.
     validate.employeesRules(),
     utilities.checkingErrors,
     utilities.errorHandler(employeesController.createEmployee)
@@ -55,7 +57,7 @@ router.put(
               $address: "123 Spooner St, Springville, IL 12345"
        }
     }*/
-    //utilities.isAuthenticate,
+    utilities.isAuthenticate("manager"),
     validate.employeesRules(),
     utilities.checkingErrors,
     utilities.errorHandler(employeesController.updateEmployee)
@@ -64,7 +66,7 @@ router.put(
 router.delete(
     "/:id",
     // #swagger.tags=['Employees']
-    //utilities.isAuthenticate,
+    utilities.isAuthenticate("manager"),
     utilities.errorHandler(employeesController.deleteEmployee)
 );
 

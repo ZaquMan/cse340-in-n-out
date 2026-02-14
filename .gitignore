@@ -140,3 +140,7 @@ vite.config.ts.timestamp-*
 
 # MS Word Temp File
 ~$*.docx
+
+# Video files from assignment review
+*.mkv
+*.mp4

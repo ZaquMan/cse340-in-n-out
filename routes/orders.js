@@ -10,12 +10,14 @@ const ordersController = require("../controllers/orders");
 router.get(
     "/",
     // #swagger.tags=['Orders']
+    utilities.isAuthenticate("employee"),
     utilities.errorHandler(ordersController.getAllOrders)
 );
 
 router.get(
     "/:id",
     // #swagger.tags=['Orders']
+    utilities.isAuthenticate("employee"),
     utilities.errorHandler(ordersController.getSingleOrder)
 );
 
@@ -34,7 +36,7 @@ router.post(
               $timestamp: "2020-03-01T00:00:00.000+00:00"
 	   }
 	}*/
-    //utilities.isAuthenticate,
+    utilities.isAuthenticate("employee"),
     validate.ordersRules(),
     utilities.checkingErrors,
     utilities.errorHandler(ordersController.createOrder)
@@ -55,7 +57,7 @@ router.put(
               $timestamp: "2020-03-01T00:00:00.000+00:00"
 	   }
 	}*/
-    //utilities.isAuthenticate,
+    utilities.isAuthenticate("employee"),
     validate.ordersRules(),
     utilities.checkingErrors,
     utilities.errorHandler(ordersController.updateOrder)
@@ -64,7 +66,7 @@ router.put(
 router.delete(
     "/:id",
     // #swagger.tags=['Orders']
-    // utilities.isAuthenticate,
+    utilities.isAuthenticate("manager"),
     utilities.errorHandler(ordersController.deleteOrder)
 );
 
