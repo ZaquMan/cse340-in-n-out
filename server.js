@@ -54,7 +54,7 @@ passport.use(
         },
         function (accessToken, refreshToken, profile, done) {
             const user = {
-                id: profile.username,
+                id: profile.id,
                 displayName: profile.displayName
             };
             return done(null, user);
