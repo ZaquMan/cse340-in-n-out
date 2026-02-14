@@ -1,6 +1,5 @@
 const { validationResult } = require("express-validator");
 const Employee = require("../models/employees");
-require("dotenv").config();
 
 const Util = {};
 

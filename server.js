@@ -1,18 +1,16 @@
 /********************
  * Require Statements
  ********************/
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const routes = require("./routes");
 const mongoose = require("./database/index");
-const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger.json");
 const passport = require("passport");
 const GithubStrategy = require("passport-github2").Strategy;
 const session = require("express-session");
 
-require("dotenv").config();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
@@ -21,18 +19,13 @@ app.use(
     session({
         secret: process.env.SESSION_SECRET,
         resave: false,
-        saveUninitialized: false //TEST: May need to make this true
+        saveUninitialized: false
     })
 )
     .use(passport.initialize())
     .use(passport.session());
 
-//TODO: Skipping setting up session and Github OAuth
-
 app.use("/", routes);
-
-//Route for swagger documentation
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //404 Error Handler
 app.use(async (req, res, next) => {
@@ -60,7 +53,11 @@ passport.use(
             callbackURL: process.env.CALLBACK_URL
         },
         function (accessToken, refreshToken, profile, done) {
-            return done(null, profile);
+            const user = {
+                id: profile.username,
+                displayName: profile.displayName
+            };
+            return done(null, user);
         }
     )
 );

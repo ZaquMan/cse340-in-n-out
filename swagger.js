@@ -4,7 +4,7 @@ const doc = {
     info: {
         title: "An In-n-Out focused API",
         description:
-            "API that allows In-n-Out employees and managers programtic access to managing their store's menu, ingredient inventory, orders, and employees"
+            "API that allows In-n-Out employees and managers programmatic access to managing their store's menu, ingredient inventory, orders, and employees"
     },
     host: "cse340-in-n-out.onrender.com",
     schemes: ["https"]
