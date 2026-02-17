@@ -26,7 +26,7 @@
         "tags": [
           "OAuth"
         ],
-        "description": "",
+        "description": "OAuth callback used by GitHub. On success, a session cookie is created and the user is redirected.",
         "responses": {
           "default": {
             "description": ""
@@ -39,7 +39,7 @@
         "tags": [
           "OAuth"
         ],
-        "description": "",
+        "description": "Redirects the user to GitHub to authenticate.",
         "responses": {
           "default": {
             "description": ""
@@ -52,7 +52,7 @@
         "tags": [
           "OAuth"
         ],
-        "description": "",
+        "description": "Destroys the current session and logs the user out.",
         "responses": {
           "default": {
             "description": ""
@@ -65,7 +65,7 @@
         "tags": [
           "Employees"
         ],
-        "description": "",
+        "description": "Returns a list of employees.",
         "responses": {
           "401": {
             "description": "Unauthorized"
@@ -79,7 +79,7 @@
         "tags": [
           "Employees"
         ],
-        "description": "",
+        "description": "Creates a new employee record.",
         "parameters": [
           {
             "name": "body",
@@ -144,7 +144,7 @@
         "tags": [
           "Employees"
         ],
-        "description": "",
+        "description": "Returns a single employee by MongoDB ObjectId.",
         "parameters": [
           {
             "name": "id",
@@ -166,7 +166,7 @@
         "tags": [
           "Employees"
         ],
-        "description": "",
+        "description": "Updates an employee by id.",
         "parameters": [
           {
             "name": "id",
@@ -235,7 +235,7 @@
         "tags": [
           "Employees"
         ],
-        "description": "",
+        "description": "Deletes an employee by id.",
         "parameters": [
           {
             "name": "id",
@@ -259,7 +259,7 @@
         "tags": [
           "Ingredients"
         ],
-        "description": "",
+        "description": "Returns all ingredients in inventory.",
         "responses": {
           "401": {
             "description": "Unauthorized"
@@ -273,7 +273,7 @@
         "tags": [
           "Ingredients"
         ],
-        "description": "",
+        "description": "Creates a new ingredient inventory record.",
         "parameters": [
           {
             "name": "body",
@@ -315,7 +315,7 @@
         "tags": [
           "Ingredients"
         ],
-        "description": "",
+        "description": "Returns a single ingredient by MongoDB ObjectId.",
         "parameters": [
           {
             "name": "id",
@@ -337,7 +337,7 @@
         "tags": [
           "Ingredients"
         ],
-        "description": "",
+        "description": "Updates an ingredient by id.",
         "parameters": [
           {
             "name": "id",
@@ -379,7 +379,7 @@
         "tags": [
           "Ingredients"
         ],
-        "description": "",
+        "description": "Deletes an ingredient by id.",
         "parameters": [
           {
             "name": "id",
@@ -403,7 +403,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Returns all orders placed in the system.",
         "responses": {
           "401": {
             "description": "Unauthorized"
@@ -417,7 +417,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Creates a new order.",
         "parameters": [
           {
             "name": "body",
@@ -481,7 +481,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Returns a single order by MongoDB ObjectId.",
         "parameters": [
           {
             "name": "id",
@@ -503,7 +503,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Updates an order by id.",
         "parameters": [
           {
             "name": "id",
@@ -575,7 +575,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Deletes an order by id.",
         "parameters": [
           {
             "name": "id",
@@ -599,7 +599,7 @@
         "tags": [
           "Menu_items"
         ],
-        "description": "",
+        "description": "Returns all menu items.",
         "responses": {
           "401": {
             "description": "Unauthorized"
@@ -613,7 +613,7 @@
         "tags": [
           "Menu_items"
         ],
-        "description": "",
+        "description": "Creates a new menu item.",
         "parameters": [
           {
             "name": "body",
@@ -665,7 +665,7 @@
         "tags": [
           "Menu_items"
         ],
-        "description": "",
+        "description": "Returns a single menu item by MongoDB ObjectId.",
         "parameters": [
           {
             "name": "id",
@@ -687,7 +687,7 @@
         "tags": [
           "Menu_items"
         ],
-        "description": "",
+        "description": "Updates a menu item by id.",
         "parameters": [
           {
             "name": "id",
@@ -743,7 +743,7 @@
         "tags": [
           "Menu_items"
         ],
-        "description": "",
+        "description": "Delete a menu item",
         "parameters": [
           {
             "name": "id",
