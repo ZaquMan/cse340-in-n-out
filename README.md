@@ -13,6 +13,26 @@ This project is planned to be in developement between Feburary 2nd and 20th.
 
 Please reference [Trello](https://trello.com/b/tdrBiveR/cse341final) for work to be done.
 
+## Authentication and Authorization
+
+This API uses GitHub OAuth for authentication.
+Navigate to /login to authenticate.
+After successful login, a session cookie is issued.
+Protected routes require authentication.
+Manager roles have full access to resources.
+Employees are generally restricted to read and limited modification access.
+Unauthenticated users may only access public GET routes (menu items).
+
+## Tech Satck
+
+-Node.js
+-Express.js
+-MongoDB & Mongoose
+-Passport.js (GitHub OAuth)
+-Jest (Unit Testing)
+-Swagger (API Documentation)
+-Render (Deployment)
+
 ## Getting Started
 
 1. Clone this repo.
