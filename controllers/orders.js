@@ -1,10 +1,12 @@
 // const ObjectId = require("mongodb").ObjectId;
 const Order = require("../models/orders");
+const Menu_item = require("../models/menu");
+const Ingredient = require("../models/ingredients");
 const { CastError, DocumentNotFoundError } = require("mongoose").Error;
 
 const getAllOrders = async (req, res, next) => {
     try {
-        const orders = await Order.find();
+        const orders = await Order.find().populate("items", "name");
         if (!orders) {
             next({ status: 404, message: "No orders were found." });
             return;
@@ -18,7 +20,7 @@ const getAllOrders = async (req, res, next) => {
 const getSingleOrder = async (req, res, next) => {
     const id = req.params.id;
     try {
-        const order = await Order.findById(id);
+        const order = await Order.findById(id).populate("items", "name");
         if (!order) {
             next({ status: 404, message: "That order does not exist." });
             return;
@@ -35,7 +37,38 @@ const getSingleOrder = async (req, res, next) => {
 
 const createOrder = async (req, res, next) => {
     const { customerName, subTotal, tax, total, items, customizations, timestamp } = req.body;
+    const ingredientsUsed = [];
     try {
+        // Check if there is enough inventory for each menu_item and decrease it's quantity
+        for (const itemId of items) {
+            const menu_item = await Menu_item.findById(itemId);
+            for (const ingredientId of menu_item.ingredients) {
+                const result = await Ingredient.findOneAndUpdate(
+                    { _id: ingredientId, quantity: { $gte: 0 } }, //Only updates if there is some inventory
+                    { $inc: { quantity: -1 } },
+                    { returnDocument: "after" }
+                );
+                if (!result) {
+                    // Restore inventory levels if we can't complete an order.
+                    if (ingredientsUsed) {
+                        for (const Id of ingredientsUsed) {
+                            await Ingredient.findOneAndUpdate(
+                                { _id: Id },
+                                { $inc: { quantity: 1 } }
+                            );
+                        }
+                    }
+                    next({
+                        status: 400,
+                        message: `There are not enough of ingredient ${ingredientId} for this order.`
+                    });
+                    return;
+                } else {
+                    ingredientsUsed.push(ingredientId);
+                }
+            }
+        }
+
         const order = await Order.create({
             customerName: customerName,
             subTotal: subTotal,
