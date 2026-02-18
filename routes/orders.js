@@ -32,7 +32,7 @@ router.post(
               $tax : 0.0,
               $total: 0.0,
               $items: [],
-              $customizations: {}},
+              $customizations: [],
               $timestamp: "2020-03-01T00:00:00.000+00:00"
 	   }
 	}*/
@@ -53,7 +53,7 @@ router.put(
               $tax : 0.0,
               $total: 0.0,
               $items: [],
-              $customizations: {},
+              $customizations: [],
               $timestamp: "2020-03-01T00:00:00.000+00:00"
 	   }
 	}*/
