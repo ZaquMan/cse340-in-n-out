@@ -13,7 +13,7 @@ const menuSchema = new Schema({
     ingredients: [
         {
             type: Schema.Types.ObjectId,
-            ref: "ingredients"
+            ref: "Ingredient"
         }
     ]
 });

@@ -37,10 +37,10 @@ const orderSchema = new Schema({
     items: [
         {
             type: Schema.Types.ObjectId,
-            ref: "menu_items"
+            ref: "Menu"
         }
     ],
-    customizations: Schema.Types.Object, //Did you mean ObjectId?
+    customizations: Schema.Types.Array,
     timestamp: {
         type: Date,
         max: Date.now()
