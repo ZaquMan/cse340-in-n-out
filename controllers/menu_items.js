@@ -7,7 +7,11 @@ const { CastError, DocumentNotFoundError } = require("mongoose").Error;
 
 const getAllMenu_items = async (req, res, next) => {
     try {
-        const menu_items = await Menu_item.find().populate("ingredients", "name");
+        const findQuery = Menu_item.find();
+        const menu_items =
+            findQuery && typeof findQuery.populate === "function"
+                ? await findQuery.populate("ingredients", "name")
+                : await findQuery;
         if (!menu_items) {
             next({ status: 404, message: "No menu items were found." });
             return;
@@ -21,7 +25,11 @@ const getAllMenu_items = async (req, res, next) => {
 const getSingleMenu_item = async (req, res, next) => {
     const id = req.params.id;
     try {
-        const menu_item = await Menu_item.findById(id).populate("ingredients", "name");
+        const findQuery = Menu_item.findById(id);
+        const menu_item =
+            findQuery && typeof findQuery.populate === "function"
+                ? await findQuery.populate("ingredients", "name")
+                : await findQuery;
         if (!menu_item) {
             next({ status: 404, message: "That menu item does not exist." });
             return;

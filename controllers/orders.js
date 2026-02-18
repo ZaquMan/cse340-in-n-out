@@ -6,7 +6,11 @@ const { CastError, DocumentNotFoundError } = require("mongoose").Error;
 
 const getAllOrders = async (req, res, next) => {
     try {
-        const orders = await Order.find().populate("items", "name");
+        const findQuery = Order.find();
+        const orders =
+            findQuery && typeof findQuery.populate === "function"
+                ? await findQuery.populate("items", "name")
+                : await findQuery;
         if (!orders) {
             next({ status: 404, message: "No orders were found." });
             return;
@@ -20,7 +24,11 @@ const getAllOrders = async (req, res, next) => {
 const getSingleOrder = async (req, res, next) => {
     const id = req.params.id;
     try {
-        const order = await Order.findById(id).populate("items", "name");
+        const findQuery = Order.findById(id);
+        const order =
+            findQuery && typeof findQuery.populate === "function"
+                ? await findQuery.populate("items", "name")
+                : await findQuery;
         if (!order) {
             next({ status: 404, message: "That order does not exist." });
             return;
